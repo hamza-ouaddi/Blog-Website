@@ -1,0 +1,109 @@
+@import "colors";
+@import "helpers/mixins";
+
+%align-center {
+  display: flex;
+  align-items: center;
+}
+
+%green-hover {
+  color: $darkGreen;
+  transition: all 0.3s ease;
+}
+
+/*! Navbar section */
+.navbar {
+  background-color: $lightGrey;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding: 3em 5em;
+  position: relative;
+  z-index: 10;
+
+  @include breakpoints(mobile) {
+    padding: 0;
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  /*! Brand */
+  &-logo {
+    color: $lightDark;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.7rem;
+    padding: 0 1.5em;
+    letter-spacing: 0.1rem;
+    @extend %align-center;
+
+    &:hover {
+      @extend %green-hover;
+    }
+
+    @include breakpoints(mobile) {
+      padding: 0 0.6em;
+      margin: 0.3em 0 0.6em;
+    }
+  }
+
+  /*! Links */
+  &-menu {
+    text-align: center;
+    list-style: none;
+    margin-right: 2em;
+    display: flex;
+    align-items: center;
+    @include breakpoints(mobile) {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .show {
+      display: flex;
+    }
+
+    &-links {
+      justify-content: center;
+      padding: 0 1.2em;
+      color: $dark;
+      text-decoration: none;
+      letter-spacing: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+
+      &:hover {
+        @extend %green-hover;
+      }
+
+      @include breakpoints(mobile) {
+        padding-top: 0.6em;
+        padding-bottom: 0.8em;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  /*! Side Navbar(Hamburger Menu) */
+  .toggle-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+
+    @include breakpoints(mobile) {
+      display: flex;
+    }
+
+    .bar {
+      width: 100%;
+      height: 2px;
+      background-color: $dark;
+    }
+  }
+}

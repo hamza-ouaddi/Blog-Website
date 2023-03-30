@@ -1,0 +1,79 @@
+@import "colors";
+@import "helpers/mixins";
+
+.posts-container {
+  padding: 4em 2em;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0px;
+
+  /*! Using Media Queries */
+  @include breakpoints(mobile) {
+    grid-template-columns: 1fr;
+    padding: 2em 0.2em;
+  }
+  @include breakpoints(small) {
+    grid-template-columns: 1fr 1fr;
+    padding: 2em 0.2em;
+  }
+
+  @include breakpoints(medium) {
+    grid-template-columns: 1fr 1fr;
+    padding: 2em 0;
+  }
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    margin: 0 auto 4em;
+    padding: 1em 3em;
+    width: 80%;
+    border-radius: 16px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+    /*! Using Media Queries */
+    @include breakpoints(mobile) {
+      padding: 0.5em 0.5em;
+    }
+    @include breakpoints(small) {
+      padding: 1em 1em;
+    }
+    @include breakpoints(medium) {
+      padding: 1em 2em;
+    }
+
+    > p {
+      font-size: 1.1rem;
+      line-height: 1.3em;
+      margin: 1em 1em 1em;
+      /*! Using Media Queries */
+      @include breakpoints(mobile) {
+        font-size: 1rem;
+      }
+    }
+
+    .readmore-btn {
+      display: block;
+      cursor: pointer;
+      border: none;
+      padding: 0.8em 0.2em;
+      width: 40%;
+      text-align: center;
+      border-radius: 2px;
+      background-color: $lightDark;
+      color: white;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        background: $darkGreen;
+        box-shadow: 0 6px 20px rgb(0 118 255 / 23%);
+      }
+    }
+  }
+}

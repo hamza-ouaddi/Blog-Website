@@ -1,0 +1,50 @@
+@import "navbar";
+@import "footer";
+@import "composePage";
+@import "postCards";
+@import "helpers/mixins";
+
+/*! Main Section */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+.container {
+  padding: 2em 7.5em 0;
+  min-height: 100vh;
+
+  /*! Using Media Queries */
+  @include breakpoints(mobile) {
+    padding: 1em 3em 0;
+  }
+
+  @include breakpoints(small) {
+    padding: 1em 2em;
+  }
+
+  @include breakpoints(medium) {
+    padding: 1em 5em;
+  }
+
+  h1 {
+    margin: 0.4em auto;
+
+    /*! Using Media Queries */
+    @include breakpoints(mobile) {
+      font-size: 1.5rem;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $darkGreen;
+
+    &:hover {
+      transition: all 0.3s ease;
+      color: $green;
+    }
+  }
+}

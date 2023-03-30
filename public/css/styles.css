@@ -1,0 +1,294 @@
+.footer,
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu-links:hover,
+.navbar-logo:hover {
+  color: #11999e;
+  transition: all 0.3s ease;
+}
+
+/*! Navbar section */
+.navbar {
+  background-color: #f0f5f9;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding: 3em 5em;
+  position: relative;
+  z-index: 10;
+  /*! Brand */
+  /*! Links */
+  /*! Side Navbar(Hamburger Menu) */
+}
+@media (max-width: 767px) {
+  .navbar {
+    padding: 0;
+    flex-direction: column;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+.navbar-logo {
+  color: #52616b;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.7rem;
+  padding: 0 1.5em;
+  letter-spacing: 0.1rem;
+}
+@media (max-width: 767px) {
+  .navbar-logo {
+    padding: 0 0.6em;
+    margin: 0.3em 0 0.6em;
+  }
+}
+.navbar-menu {
+  text-align: center;
+  list-style: none;
+  margin-right: 2em;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.navbar-menu .show {
+  display: flex;
+}
+
+.show {
+  display: flex;
+}
+
+.navbar-menu-links {
+  justify-content: center;
+  padding: 0 1.2em;
+  color: #222121;
+  text-decoration: none;
+  letter-spacing: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  .navbar-menu-links {
+    padding-top: 0.6em;
+    padding-bottom: 0.8em;
+    font-size: 1rem;
+  }
+}
+.navbar .toggle-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+@media (max-width: 767px) {
+  .navbar .toggle-btn {
+    display: flex;
+  }
+}
+.navbar .toggle-btn .bar {
+  width: 100%;
+  height: 2px;
+  background-color: #222121;
+}
+
+.footer,
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+/*! Footer section */
+.footer {
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #c9d6df;
+}
+.footer p {
+  font-size: 12px;
+  color: #222121;
+  letter-spacing: 0.2em;
+  margin: 0 !important;
+}
+
+.compose-form textarea,
+.compose-form input {
+  margin-top: 0.3em;
+  margin-bottom: 1em;
+}
+
+.compose-form {
+  display: flex;
+  flex-direction: column;
+}
+.compose-form input {
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 2px;
+  width: 100%;
+  height: 30px;
+  padding: 0.2em;
+}
+.compose-form textarea {
+  padding: 0.4em;
+}
+.compose-form button {
+  cursor: pointer;
+  border: none;
+  height: 40px;
+  width: 112px;
+  border-radius: 2px;
+  background-color: #52616b;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.compose-form button:hover {
+  background: #11999e;
+  box-shadow: 0 6px 20px rgba(0, 118, 255, 0.23);
+}
+
+.posts-container {
+  padding: 4em 2em;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0px;
+  /*! Using Media Queries */
+}
+@media (max-width: 767px) {
+  .posts-container {
+    grid-template-columns: 1fr;
+    padding: 2em 0.2em;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .posts-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 2em 0.2em;
+  }
+}
+@media (min-width: 992px) and (max-width: 1499px) {
+  .posts-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 2em 0;
+  }
+}
+.posts-container .post-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  margin: 0 auto 4em;
+  padding: 1em 3em;
+  width: 80%;
+  border-radius: 16px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  /*! Using Media Queries */
+}
+@media (max-width: 767px) {
+  .posts-container .post-card {
+    padding: 0.5em 0.5em;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .posts-container .post-card {
+    padding: 1em 1em;
+  }
+}
+@media (min-width: 992px) and (max-width: 1499px) {
+  .posts-container .post-card {
+    padding: 1em 2em;
+  }
+}
+.posts-container .post-card > p {
+  font-size: 1.1rem;
+  line-height: 1.3em;
+  margin: 1em 1em 1em;
+  /*! Using Media Queries */
+}
+@media (max-width: 767px) {
+  .posts-container .post-card > p {
+    font-size: 1rem;
+  }
+}
+.posts-container .post-card .readmore-btn {
+  display: block;
+  cursor: pointer;
+  border: none;
+  padding: 0.8em 0.2em;
+  width: 40%;
+  text-align: center;
+  border-radius: 2px;
+  background-color: #52616b;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.posts-container .post-card .readmore-btn:hover {
+  background: #11999e;
+  box-shadow: 0 6px 20px rgba(0, 118, 255, 0.23);
+}
+
+/*! Main Section */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+.container {
+  padding: 2em 7.5em 0;
+  min-height: 100vh;
+  /*! Using Media Queries */
+}
+@media (max-width: 767px) {
+  .container {
+    padding: 1em 3em 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    padding: 1em 2em;
+  }
+}
+@media (min-width: 992px) and (max-width: 1499px) {
+  .container {
+    padding: 1em 5em;
+  }
+}
+.container h1 {
+  margin: 0.4em auto;
+  /*! Using Media Queries */
+}
+@media (max-width: 767px) {
+  .container h1 {
+    font-size: 1.5rem;
+  }
+}
+.container a {
+  text-decoration: none;
+  color: #11999e;
+}
+.container a:hover {
+  transition: all 0.3s ease;
+  color: #30e3ca;
+} /*# sourceMappingURL=styles.css.map */
