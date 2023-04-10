@@ -1,11 +1,38 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const router = express.Router();
 const ejs = require("ejs");
 const _ = require("lodash");
 
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT;
+
+////////////////////////////MongoDB////////////////////////////
+//Connect to database
+mongoose.connect("mongodb://127.0.0.1:27017/blogDB");
+
+//Post Schema
+const postSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  body: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+//Post Model
+const Post = mongoose.model("Post", postSchema);
+
+//////////////////////////////////////////////////////////////
 
 const homeContent =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Et ligula ullamcorper malesuada proin. Mattis enim ut tellus elementum sagittis vitae et leo. Dignissim cras tincidunt lobortis feugiat vivamus at. Et sollicitudin ac orci phasellus egestas tellus. Sit amet luctus venenatis lectus magna fringilla urna. Consequat semper viverra nam libero justo laoreet sit amet cursus. Urna neque viverra justo nec.";
@@ -15,8 +42,6 @@ const aboutContent =
 
 const contactContent =
   "Commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Sed euismod nisi porta lorem mollis aliquam. Sed felis eget velit aliquet.";
-
-let posts = [];
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -30,7 +55,17 @@ app.get("/side-navbar.js", function (req, res) {
 
 //Website Pages
 app.get("/", function (req, res) {
-  res.render("home", { homeContent: homeContent, posts: posts });
+  find();
+  async function find() {
+    await Post.find({})
+      .sort({ date: "descending" })
+      .then((foundPosts) => {
+        res.render("home", { homeContent: homeContent, posts: foundPosts });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 });
 
 app.get("/about", function (req, res) {
@@ -45,16 +80,22 @@ app.get("/compose", function (req, res) {
   res.render("compose");
 });
 
-app.get("/posts/:postTopic", function (req, res) {
+app.get("/posts/:postId", function (req, res) {
   const postTopicLink = _.lowerCase(req.params.postTopic);
+  const postId = req.params.postId;
 
-  posts.forEach(function (post) {
-    const postTitle = _.lowerCase(post.title);
-
-    if (postTopicLink === postTitle) {
-      res.render("post", { title: post.title, body: post.body });
-    }
-  });
+  Post.findOne({ _id: postId })
+    .then((foundPost) => {
+      res.render("post", {
+        title: foundPost.title,
+        body: foundPost.body,
+        date: foundPost.date,
+        post: foundPost,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 //////////////////////////////////////////////////////////////////////
@@ -62,13 +103,31 @@ app.post("/compose", function (req, res) {
   let postTitle = req.body.postTitle;
   let postText = req.body.postText;
 
-  const blogPost = {
+  const post = new Post({
     title: postTitle,
     body: postText,
-  };
+  });
 
-  posts.push(blogPost);
-  res.redirect("/");
+  post
+    .save()
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//Delete post
+app.post("/posts/:id/delete", function (req, res) {
+  const postId = req.body.deleteBtn;
+  Post.findByIdAndDelete(postId)
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.listen(port, function () {

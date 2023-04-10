@@ -1,11 +1,9 @@
-.footer,
-.navbar-logo {
+.footer, .navbar-logo {
   display: flex;
   align-items: center;
 }
 
-.navbar-menu-links:hover,
-.navbar-logo:hover {
+.navbar-menu-links:hover, .navbar-logo:hover {
   color: #11999e;
   transition: all 0.3s ease;
 }
@@ -62,11 +60,6 @@
 .navbar-menu .show {
   display: flex;
 }
-
-.show {
-  display: flex;
-}
-
 .navbar-menu-links {
   justify-content: center;
   padding: 0 1.2em;
@@ -104,8 +97,7 @@
   background-color: #222121;
 }
 
-.footer,
-.navbar-logo {
+.footer, .navbar-logo {
   display: flex;
   align-items: center;
 }
@@ -125,8 +117,7 @@
   margin: 0 !important;
 }
 
-.compose-form textarea,
-.compose-form input {
+.compose-form textarea, .compose-form input {
   margin-top: 0.3em;
   margin-bottom: 1em;
 }
@@ -247,6 +238,37 @@
   box-shadow: 0 6px 20px rgba(0, 118, 255, 0.23);
 }
 
+.container .post-body {
+  line-height: 2em;
+  font-size: 1.2rem;
+  text-align: justify;
+  padding: 0 2em;
+}
+.container .post-date {
+  margin-top: 1em;
+  font-size: 0.8rem;
+}
+.container .btn-div {
+  display: flex;
+  justify-content: flex-end;
+}
+.container button {
+  cursor: pointer;
+  border: none;
+  padding: 0.7em 1.2em;
+  border-radius: 2px;
+  background-color: #52616b;
+  color: white;
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.container button:hover {
+  background: #11999e;
+  box-shadow: 0 6px 20px rgba(0, 118, 255, 0.23);
+}
+
 /*! Main Section */
 * {
   box-sizing: border-box;
@@ -291,4 +313,10 @@
 .container a:hover {
   transition: all 0.3s ease;
   color: #30e3ca;
-} /*# sourceMappingURL=styles.css.map */
+}
+.container .page-content {
+  line-height: 1.5em;
+  padding: 0 1em;
+  font-size: 1.2rem;
+  font-weight: 400;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,7 +1,20 @@
 <%- include("partials/header"); -%>
 <div class="container">
-  <h1><%=title %></h1>
-  <p><%= body %></p>
+  <div>
+    <h1><%=title %></h1>
+  </div>
+  <p class="post-body"><%= body %></p>
 
+  <% if (date) { %>
+  <p class="post-date">Created at <%= date.toLocaleString() %></p>
+  <% } %>
+  <!-- <p class="post-date"><%= date %></p> -->
+  <div class="btn-div">
+    <form action="/posts/<%=post._id%>/delete" method="post">
+      <button type="submit" name="deleteBtn" value="<%=post._id%>">
+        Delete
+      </button>
+    </form>
+  </div>
   <%-include("partials/footer"); -%>
 </div>
