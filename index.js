@@ -11,7 +11,7 @@ const port = process.env.PORT;
 
 ////////////////////////////MongoDB////////////////////////////
 //Connect to database
-mongoose.connect("mongodb://127.0.0.1:27017/blogDB");
+mongoose.connect(process.env.DATABASE_CONNECTION);
 
 //Post Schema
 const postSchema = new mongoose.Schema({
